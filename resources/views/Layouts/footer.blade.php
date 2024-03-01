@@ -56,3 +56,25 @@ document.body.removeChild(input);
 alert('Address copied to clipboard');
 }
 </script>
+
+
+<script>
+    function displayThumbnail() {
+        var videoUrl = $('#videoUrl').val();
+        var videoId = extractVideoId(videoUrl);
+        var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
+
+        if (!videoUrl) {
+        alert('Please enter a YouTube video URL.');
+        return;
+    }
+        $('#thumbnailContainer').empty();
+        // Append the thumbnail image to the container
+        $('#thumbnailContainer').append('<a href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank"><img src="' + thumbnailUrl + '" alt="YouTube Thumbnail"></a>');
+    }
+
+    function extractVideoId(url) {
+        var match = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+        return match ? match[1] : null;
+    }
+</script>

@@ -180,9 +180,35 @@
                             <a href="{{ route('users.index') }}"
                                 class="btn btn-danger text-white waves-effect waves-light">Cancel</a>
                         </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h2>YouTube Preview</h2>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mt-2" for="videoUrl">Enter YouTube Video URL:</label>
+
+                                <input type="text" id="videoUrl" class="form-control" name="videoUrl"
+                                    placeholder=" Enter YouTube Video URL" aria-describedby="basic-icon-default-company2">
+                                <button style="background-color:#7367f0" class="btn text-white mt-3"
+                                    onclick="displayThumbnail()">Preview Thumbnail</button>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="" id="thumbnailContainer">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

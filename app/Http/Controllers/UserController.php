@@ -142,7 +142,6 @@ class UserController extends Controller
         return back()->withError('An error occurred: ' . $e->getMessage())->withInput();
     }
     }
-    
     public function delete($id)
     {
         try {
@@ -153,6 +152,4 @@ class UserController extends Controller
             return back()->withError('An error occurred: ' . $e->getMessage());
         }
     }
-
-
 }
