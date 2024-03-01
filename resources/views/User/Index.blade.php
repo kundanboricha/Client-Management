@@ -1,7 +1,21 @@
 @extends('Layouts.main')
 @section('details')
 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h4 class="py-3 mb-4">Dashboard/User</h4>
+                    <h4 class="py-3 mb-4">Dashboard/Client</h4>
+                    <div class="col-md-12">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    </div>
 
                     <div class="col-md mb-4 mb-md-2">
 
@@ -12,7 +26,7 @@
                                     <h2 class="accordion-header" id="headingOne">
                                         <button type="button" class="accordion-button" data-bs-toggle="collapse"
                                             data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
-                                            Filter User
+                                            Filter Client
                                         </button>
                                     </h2>
 
@@ -58,12 +72,12 @@
 
                                             <div class="accordion-body col-md-3">
                                                 <label class="form-label">Start Date</label><br>
-                                                <input type="datetime-local" class="form-control" name="start_date"
+                                                <input type="date" class="form-control" name="start_date"
                                                     value="{{ old('start_date', $request->start_date) }}">
                                             </div>
                                             <div class="accordion-body col-md-3">
                                                 <label class="form-label">End Date</label><br>
-                                                <input type="datetime-local" class="form-control" name="end_date"
+                                                <input type="date" class="form-control" name="end_date"
                                                     value="{{ old('end_date', $request->end_date) }}">
                                             </div>
                                             <div class="row">
@@ -83,10 +97,10 @@
                         <div class="card mt-4">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h5 class="card-header">User Management</h5>
+                                    <h5 class="card-header">Client Management</h5>
                                 </div>
                                 <div class=" col-md-2 mt-3 float-end">
-                                    <a href="#" class="btn btn-info">Add User</a>
+                                    <a href="{{route('users.create')}}" class="btn btn-info">Add Client</a>
                                 </div>
                             </div>
                             <div class="table-responsive text-nowrap">
@@ -104,6 +118,11 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
+                                        @if ($users->isEmpty())
+                                            <tr>
+                                                <td colspan="8"><center>No records found !</center></td>
+                                            </tr>
+                                        @else
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>{{ $user->name }}</td>
@@ -136,7 +155,7 @@
                                                                 <i class="ti ti-pencil me-1"></i> Edit
                                                             </a>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('users.delete', $user->id) }}">
+                                                                href="{{ route('users.delete', $user->id) }}" onclick="return confirm('Are you sure you want to delete this Client?');">
                                                                 <i class="ti ti-trash me-1"></i> Delete
                                                             </a>
                                                         </div>
@@ -144,6 +163,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        @endif
 
                                     </tbody>
                                 </table>

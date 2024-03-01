@@ -13,6 +13,10 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('users.index');
+});
+
 
 Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users.index');

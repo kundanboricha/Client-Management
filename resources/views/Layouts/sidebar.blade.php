@@ -33,17 +33,12 @@
     <ul class="menu-inner py-1">
         <!-- Page -->
         <li class="menu-item active">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Page 1">Usersx</div>
+            <a href="{{route('users.index')}}" class="menu-link">
+                <i class="ti ti-user"></i>
+                <div data-i18n="Page 1"> Client</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="page-2.html" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">Page 2</div>
-            </a>
-        </li>
+        
     </ul>
 </aside>
 <!-- / Menu -->
